@@ -39,6 +39,6 @@ course_options = {
 }
 
 boolean_options = {
-    "Ya": 1,
-    "Tidak": 0
+    "Yes": 1,
+    "No": 0
 }
