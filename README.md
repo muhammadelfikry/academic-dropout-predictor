@@ -1,4 +1,4 @@
-# Proyek Akhir: Menyelesaikan Permasalahan Perusahaan Edutech
+# Proyek Akhir: Menyelesaikan Permasalahan Institusi Pendidikan
 
 ## Business Understanding
 **Jaya Jaya Institut** merupakan institusi pendidikan tinggi yang telah berdiri sejak tahun 2000 dan dikenal memiliki reputasi yang baik dalam mencetak lulusan berkualitas. Namun, belakangan ini institusi menghadapi tantangan serius berupa **tingginya angka dropout** mahasiswa. Tingginya tingkat dropout tidak hanya merugikan mahasiswa secara individu, tetapi juga berpotensi menurunkan kredibilitas dan citra institusi di mata masyarakat. Untuk mengatasi permasalahan ini, diperlukan sebuah sistem yang dapat melakukan deteksi dini terhadap mahasiswa yang berisiko mengalami dropout, sehingga intervensi atau bimbingan khusus dapat segera diberikan.
