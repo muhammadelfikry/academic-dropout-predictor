@@ -19,12 +19,34 @@
 
 **Setup environment**:
 
-Untuk mengunduh seluruh berkas dalam proyek ini, jalankan perintah git pull berikut dan pastikan anda sudah memiliki git:
+Untuk mengunduh seluruh berkas dalam proyek ini, gunakan perintah berikut. Pastikan Git telah terinstal di sistem:
+
 ```bash
 git pull https://github.com/muhammadelfikry/academic-dropout-predictor.git
 ```
 
-Jalankan kode berikut untuk melakukan installasi library yang dibutuhkan untuk menjalankan proyek ini.
+Setelah repositori berhasil diunduh, masuk ke direktori proyek dan buat lingkungan virtual menggunakan ```venv``` untuk menjaga kestabilan dan isolasi dependensi:
+
+```bash
+cd academic-dropout-predictor
+python -m venv venv
+```
+
+Aktifkan environment sesuai dengan sistem operasi yang digunakan:
+
+- Windows (Command Prompt):
+
+  ```bash
+  venv\Scripts\activate.bat
+  ```
+
+- macOS/Linux:
+
+  ```bash
+  source venv/bin/activate
+  ```
+
+Install seluruh library yang diperlukan melalui file ```requirements.txt```:
 
 ```bash
 pip install requirements.txt
@@ -56,40 +78,55 @@ Dashboard ini bertujuan membantu pihak institusi dalam mengidentifikasi kelompok
 https://public.tableau.com/views/JayaJayaInstitutStudentsDropoutDashboard/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
 
 ## Menjalankan Sistem Machine Learning
-Sistem prediksi dropout dideploy sebagai aplikasi web interaktif berbasis Streamlit. Aplikasi ini menyediakan dua form input utama:
+Sistem prediksi dropout telah dideploy sebagai aplikasi web interaktif berbasis Streamlit. Aplikasi ini dirancang untuk memudahkan pengguna dalam melakukan prediksi tanpa perlu memahami detail teknis pemodelan.
+
+Aplikasi menyediakan dua form input utama:
 
 1. Student Academic Information
 2. Student Administrative Data
 
-Setelah kedua form diisi, pengguna dapat menekan tombol prediksi untuk mengetahui apakah mahasiswa tersebut termasuk dalam kategori berisiko dropout atau tidak. Hasil prediksi ditampilkan secara langsung di halaman, beserta probabilitasnya.
+Setelah kedua form diisi, tombol "Prediksi" dapat ditekan untuk menghasilkan klasifikasi apakah mahasiswa tersebut berisiko mengalami dropout atau tidak. Hasil prediksi disajikan secara langsung di halaman, lengkap dengan nilai probabilitas yang dihitung oleh model Logistic Regression.
 
-Untuk menjalankan sistem ini, arahkan terminal ke folder proyek dan eksekusi perintah berikut:
+**Cara Menjalankan Aplikasi Secara Lokal**
+1. Arahkan terminal ke direktori proyek.
+2. Jalankan perintah berikut:
 
-```bash
-streamlit run app.py
-```
+  ```bash
+  streamlit run app.py
+  ```
 
-Selanjutnya, buka browser dan masukkan tautan berikut untuk mengakses aplikasi sistem machine learning ini:
+3. Buka browser dan akses aplikasi melalui alamat lokal berikut:
 
-```bash
-http://localhost:8501
-```
+  ```bash
+  http://localhost:8501
+  ```
 
-**Streamlit**
+**Tampilan Streamlit**
 
 ![image](https://github.com/user-attachments/assets/a5d1f579-2b5f-44ae-898c-314a6e720e4c)
 
-Prototipe dari sistem machine learning ini juga dapat diakses langsung melalui Streamlit pada tautan berikut:
+**Akses Aplikasi Online**
+
+Prototype sistem machine learning juga tersedia secara daring melalui Streamlit Cloud pada tautan berikut:
 
 [Jaya Jaya Institut: Academic Dropout Predictor](https://academic-dropout-predictor.streamlit.app)
 
 ## Conclusion
 Proyek ini telah menghasilkan sistem machine learning berbasis Logistic Regression yang mampu memprediksi kemungkinan dropout mahasiswa. 
-Sistem ini telah diintegrasikan ke dalam prototipe aplikasi Streamlit yang ramah pengguna, serta dilengkapi dengan visualisasi dashboard Tableau yang memberikan pemahaman menyeluruh tentang variabel yang mempengaruhi dropout.
+Sistem ini telah diintegrasikan ke dalam prototype aplikasi Streamlit yang ramah pengguna, serta dilengkapi dengan visualisasi dashboard Tableau yang memberikan pemahaman menyeluruh tentang variabel yang mempengaruhi dropout. 
 
-Dengan adanya sistem ini, pihak Jaya Jaya Institut dapat melakukan intervensi lebih awal dan menyusun strategi untuk menekan angka dropout secara signifikan.
+Berdasarkan hasil analisis, ditemukan bahwa faktor keuangan dan status beasiswa memiliki pengaruh signifikan terhadap risiko dropout. Mahasiswa yang tidak menerima beasiswa cenderung memiliki kemungkinan lebih tinggi untuk mengalami dropout. Hal ini menunjukkan bahwa dukungan finansial seperti beasiswa memainkan peran penting dalam mencegah mahasiswa putus studi. Selain itu, ditemukan pula bahwa mahasiswa non-penerima beasiswa umumnya memiliki jumlah utang yang lebih tinggi, yang semakin memperkuat indikasi bahwa masalah keuangan merupakan salah satu penyebab utama terjadinya dropout.
+
+Dengan adanya sistem ini, Jaya Jaya Institut dapat melakukan deteksi dini dan intervensi secara tepat sasaran terhadap mahasiswa yang berisiko tinggi, sehingga strategi pencegahan dapat dirancang secara lebih efektif guna menekan angka dropout secara signifikan.
 
 ### Rekomendasi Action Items
-Berikut beberapa rekomendasi action items yang dapat digunakan guna mencapai target spesifik:
-- Arahkan kursor ke grafik Course Dropout, kemudian pilih salah satu course untuk memfilter tampilan data berdasarkan course tersebut.
-- Pada grafik Students Status, tersedia dropdown filter yang dapat digunakan untuk memfilter data berdasarkan status kepemilikan hutang mahasiswa.
+Berikut beberapa rekomendasi action items yang dapat dilakukan oleh pihak Jaya Jaya Institut untuk menekan angka dropout mahasiswa:
+
+- **Berikan intervensi finansial bagi mahasiswa tanpa beasiswa yang memiliki utang tinggi.** Berdasarkan temuan dari hasil analisis, mahasiswa tanpa beasiswa menunjukkan tingkat dropout yang lebih tinggi. Pihak institusi dapat menyediakan program bantuan seperti beasiswa internal, cicilan biaya pendidikan, atau subsidi UKT.
+- **Tawarkan program pendampingan akademik atau konseling kepada mahasiswa berisiko tinggi.** Mahasiswa yang teridentifikasi dari model prediktif sebagai berisiko dropout dapat diikutkan dalam program mentoring atau bimbingan belajar yang dipersonalisasi.
+- **Gunakan dashboard sebagai alat monitoring berkala.** Tim akademik dan bagian kemahasiswaan dapat menggunakan dashboard Tableau untuk memantau pola dropout berdasarkan variabel seperti course yang diambil, status beasiswa, dan status keuangan, lalu menyusun strategi per fakultas atau per angkatan.
+- **Lakukan sosialisasi data dan temuan secara internal.** Sampaikan hasil visualisasi dan prediksi dropout secara berkala kepada dosen wali dan pihak manajemen agar keputusan intervensi dapat dilakukan secara proaktif, bukan reaktif. 
+
+### Petunjuk Penggunaan Dashboard
+- Gunakan grafik **Course Dropout** untuk memfilter data berdasarkan mata kuliah tertentu.
+- Gunakan dropdown pada grafik **Students Status** untuk memfilter data berdasarkan kepemilikan utang mahasiswa.
